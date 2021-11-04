@@ -10,7 +10,7 @@ from requests.api import request
 
 import answer
 filepath = "users.txt"
-
+##These headers and urls have been found by decrypting the ssl traffic.
 headers = {
     'Host': 'cdn-nv3-live.startrek.digitgaming.com',
     'User-Agent': 'UnityPlayer/2018.4.24f1 (UnityWebRequest/1.0, libcurl/7.52.0-DEV)',
@@ -47,14 +47,12 @@ def current_milli_time():
     return round(time.time())
 
 
-# url = "https://cdn-nv3-live.startrek.digitgaming.com/chat/v1/messages/n09d3eebd7834b49b8f0e1b162cc4d50/history/aie_176_1235645015628603909?limit=20&until="
-# url = url+str(current_milli_time())+".12345"
 
 # print(url)
 payload = {}
 
 users = []
-
+# Check alliance chat for possible commands
 def listenalliance():
     url = "https://cdn-nv3-live.startrek.digitgaming.com/chat/v1/messages/n09d3eebd7834b49b8f0e1b162cc4d50/history/aie_176_1235645015628603909?limit=20&until="
     url = url+str(current_milli_time())+".12345"
@@ -96,12 +94,12 @@ def listenalliance():
         answer.respond(jsobj, "aie_176_1235645015628603909", users)
 
 
-
+# This function checks every users history and if there is a new command carl responds. 
 def listenusers():
     
     for user in users:
         try:
-            # print("Did a user scan with user: " + user)
+            print("Did a user scan with user: " + user)
             usrurl = "https://cdn-nv3-live.startrek.digitgaming.com/chat/v1/messages/n09d3eebd7834b49b8f0e1b162cc4d50/history/usr_" + \
                 user + "?limit=20&until="
             usrurl = usrurl+str(current_milli_time())+".12345"
@@ -120,7 +118,7 @@ def listenusers():
             pass
 
 
-# on startup
+# on startup load all subscripted users into a list
 with open(os.path.join(sys.path[0], "users.txt"), "r") as f:
     lines = f.readlines()
     lines = [line.rstrip() for line in lines]
@@ -132,6 +130,6 @@ while (True):
         listenalliance()
         listenusers()
 
-    except Exception:
-        print("Something is wrong")
+    except BaseException as ex:
+        print(ex)
     time.sleep(2)

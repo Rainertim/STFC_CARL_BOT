@@ -50,6 +50,7 @@ crews = {
     "KTINGA": "Yuki(Cap) Khan (Marcus/Chavernek/Kang). Dailies: !crew dailies",
     "KORINAR": "Yuki(Cap) Khan (Marcus/Chavernek/Kang). Dailies: !crew dailies",
     "HEGHTA": "Gorkon (Cap) Kerla Khan || Lorca (Cap) Tilly Khan || Azebtur (Cap) Gorkon Khan",
+    "VORTA": "Basic mining crew. Officers like 10/10 Ston, Tpring, Barot. If you use it as fighter you are probably drunk",
     "DAILIES": "Pike (Cap) Moreau Chen against Explorers/Battleships. Pike Moreau Tlaan against Interceptors. (Pike and Moreau can be switched with Picard and Beverley)"
 }
 

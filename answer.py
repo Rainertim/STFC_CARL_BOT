@@ -90,8 +90,8 @@ def respond(jsobj, chn, users):
         }
         r = requests.post(sendurl, data=json.dumps(body), headers=sendheaders)
 
-    if(jsobj["messages"][len(jsobj["messages"])-1]["txt"].upper() == "!daily".upper()):
-        joke = "IMPLEMENTED SOON. KOMMT BALD"
+    if(jsobj["messages"][len(jsobj["messages"])-1]["txt"].upper() == "!daily".upper() or jsobj["messages"][len(jsobj["messages"])-1]["txt"].upper() == "!dailies".upper()):
+        joke = "https://stfc.space/events"
         body = {
             "chn": chn,
             "txt": joke,  # todaytakeover,
@@ -310,5 +310,3 @@ def respond(jsobj, chn, users):
         }
         r = requests.post(sendurl, data=json.dumps(body), headers=sendheaders)
     
-
-
